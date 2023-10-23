@@ -13,7 +13,6 @@ class LandingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //Ambil data artikel diurutkan berdasarkan tanggal terbaru. lalu tampilkan 7 artikel per halaman
         $transactions = Transaction::query()->latest()->paginate(7);
         return view('landing', compact('transactions'));
     }

@@ -4,16 +4,13 @@
 
 @section('content')
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Halaman Utama
       </h1>
     </section>
-
-    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid" style="padding-left: 0;"> <!-- Menghilangkan padding kiri -->
+      <div class="container-fluid" style="padding-left: 0;">
         <div class="row">
           <div class="col-md-12">
             <div class="box box-primary">
@@ -23,8 +20,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Transactions Card -->
         <div class="row mb-2">
           @forelse ($transactions as $transaction)
             <div class="col-md-6">
@@ -52,7 +47,5 @@
         </div>
       </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 @endsection

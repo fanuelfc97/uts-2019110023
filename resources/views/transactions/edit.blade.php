@@ -67,12 +67,10 @@
     </div>
 </section>
 <script>
-// Menyembunyikan opsi kategori saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
     hideCategories();
 });
 
-// Event listener untuk mengubah opsi kategori berdasarkan jenis transaksi yang dipilih
 document.getElementById('transactionType').addEventListener('change', function() {
     hideCategories();
     const selectedType = this.value;

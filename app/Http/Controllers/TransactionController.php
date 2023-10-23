@@ -7,26 +7,28 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $transactions = Transaction::paginate(10);
-        return view('transactions.index', compact('transactions'));
+        $transactions = Transaction::orderBy('created_at', 'desc')->paginate(10);
+        $allTransactions = Transaction::all();
+        $totalIncome = $allTransactions->where('type', 'income')->sum('amount');
+        $totalExpense = $allTransactions->where('type', 'expense')->sum('amount');
+        $totalIncomeTransactions = $allTransactions->where('type', 'income')->count();
+        $totalExpenseTransactions = $allTransactions->where('type', 'expense')->count();
+        return view('transactions.index', [
+            'transactions' => $transactions,
+            'totalIncome' => $totalIncome,
+            'totalExpense' => $totalExpense,
+            'totalIncomeTransactions' => $totalIncomeTransactions,
+            'totalExpenseTransactions' => $totalExpenseTransactions,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('transactions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
 
@@ -49,25 +51,16 @@ class TransactionController extends Controller
         return $transaction;
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Transaction $transaction)
     {
-        //
+        return view('transactions.show', compact('transaction'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Transaction $transaction)
     {
         return view('transactions.edit', compact('transaction'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Transaction $transaction)
     {
             $validated = $request->validate([
@@ -77,7 +70,6 @@ class TransactionController extends Controller
                 'notes' => 'nullable|string',
             ]
         );
-    // Update transaksi
     $transaction->update([
         'amount' => $validated['amount'],
         'type' => $validated['type'],
@@ -89,9 +81,6 @@ class TransactionController extends Controller
     return redirect()->route('transactions.index')->with('success', 'Transaction updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Transaction $transaction)
     {
         $transaction->delete();

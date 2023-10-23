@@ -16,7 +16,7 @@ class TransactionSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 100; $i++) {
-            $amount = $faker->randomFloat(0, 0, 100000); // Generate nominal acak dalam rupiah
+            $amount = $faker->randomFloat(0, 0, 100000);
             $type = $faker->randomElement(['income', 'expense']);
             $category = $type === 'income'
                 ? $faker->randomElement(['wage', 'bonus', 'gift'])

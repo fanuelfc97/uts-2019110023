@@ -131,16 +131,11 @@
 
 <script>
     $(document).ready(function() {
-      // Sembunyikan sidebar saat halaman dimuat
       $("#sidebar").addClass("sidebar-collapsed");
-      // Ketika tombol toggle diklik
       $("#sidebar-toggle").click(function() {
-        // Periksa status sidebar
         if ($("#sidebar").hasClass("sidebar-collapsed")) {
-          // Jika dalam mode minimis, tampilkan sidebar
-          $("#sidebar").removeClass("sidebar-collapsed");
+            $("#sidebar").removeClass("sidebar-collapsed");
         } else {
-          // Jika dalam mode aktif, sembunyikan sidebar
           $("#sidebar").addClass("sidebar-collapsed");
         }
       });
@@ -148,7 +143,6 @@
   </script>
   <script>
     $(document).ready(function () {
-      // Ketika tombol toggle diklik
       $(".sidebar-toggle").click(function (e) {
         e.preventDefault();
         if ($("body").hasClass("sidebar-collapse")) {
@@ -159,8 +153,6 @@
       });
     });
   </script>
-
-
 
 <!-- jQuery 3 -->
 <script src="{{ asset('style/bower_components/jquery/dist/jquery.min.js') }}"></script>

@@ -9,7 +9,7 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->bigIncrements('id'); // Kolom id dengan auto-increment
+            $table->bigIncrements('id');
             $table->float('amount')->default(0);
             $table->string('type');
             $table->string('category')->default('uncategorized');
