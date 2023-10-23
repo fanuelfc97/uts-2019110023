@@ -92,6 +92,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Total Income</span>
                                     <span class="info-box-number">{{ number_format($totalIncome, 2) }}</span>
+                                    <small>Transaction Income: {{ number_format($totalIncomeTransactions, 0) }}</small>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +102,7 @@
                                 <div class = "info-box-content">
                                     <span class="info-box-text">Total Expense</span>
                                     <span class="info-box-number">{{ number_format($totalExpense, 2) }}</span>
+                                    <small>Transaction Expense: {{ number_format($totalExpenseTransactions, 0) }}</small>
                                 </div>
                             </div>
                         </div>
